@@ -428,7 +428,7 @@ var resizePizzas = function (size) {
     // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
     function determineDx(elem, size) {
         var oldwidth = elem.offsetWidth;
-        var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
+        var windowwidth = document.getElementById("randomPizzas").offsetWidth;
         var oldsize = oldwidth / windowwidth;
 
         // TODO: change to 3 sizes? no more xl?
@@ -443,7 +443,6 @@ var resizePizzas = function (size) {
                 return 0.5;
             default:
                 console.log("bug in sizeSwitcher");
-                return 0.5;
             }
         }
 
@@ -455,10 +454,12 @@ var resizePizzas = function (size) {
 
     // Iterates through pizza elements on the page and changes their widths
     function changePizzaSizes(size) {
-        for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-            var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-            var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-            document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+        var pizzacontainers = document.getElementsByClassName("randomPizzaContainer");
+        //console.log(pizzacontainers);
+        var dx = determineDx(pizzacontainers[0], size);
+        var newwidth = (pizzacontainers[0].offsetWidth + dx) + 'px';
+        for (var i = 0; i < pizzacontainers.length; i++) {
+            pizzacontainers[i].style.width = newwidth;
         }
     }
 
@@ -496,7 +497,7 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
     for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
         sum = sum + times[i].duration;
     }
-    console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
+    console.log("Average time to generate last 60 frames: " + sum / 60 + "ms");
 }
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
@@ -506,17 +507,21 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
-
+    var padding = 0;
     for (var i = 0; i < items.length; i++) {
-        var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+        if (padding > 4) {
+            padding = 0;
+        }
+        var phase = 100 * (Math.sin((document.body.scrollTop / 1250) + padding));
+        items[i].style.left = items[i].basicLeft + phase + 'px';
+        padding++;
     }
 
     // User Timing API to the rescue again. Seriously, it's worth learning.
     // Super easy to create custom metrics.
     window.performance.mark("mark_end_frame");
     window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-    if (frame % 10 === 0) {
+    if (frame % 60 === 0) {
         var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
         logAverageFrame(timesToUpdatePosition);
     }
@@ -528,9 +533,9 @@ window.addEventListener('scroll', updatePositions);
 var items;
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function () {
-    var cols = 8;
+    var cols = 6;
     var s = 256;
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 30; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza.png";
