@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+    <link href="css/style.css" rel="stylesheet">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=" FILL ME IN ">
     <meta name="author" content=" FILL ME IN ">
     <title>Cameron Pittman: Portfolio</title>
 
- 
     <style>
         @media print {
             * {
@@ -61,9 +62,6 @@
     <script src="http://www.google-analytics.com/analytics.js" async></script>
     <script src="js/perfmatters.js" async></script>
 
-   <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans&subset=latin:400,700" rel="stylesheet">
 </head>
 
 <body>
@@ -114,20 +112,22 @@
             <p>&copy; Web Performance 2014 <span id="crp-stats"></span>
             </p>
         </footer>
-            <script>
-        (function (w, g) {
-            w['GoogleAnalyticsObject'] = g;
-            w[g] = w[g] || function () {
-                (w[g].q = w[g].q || []).push(arguments)
-            };
-            w[g].l = 1 * new Date();
-        })(window, 'ga');
+        <script>
+            (function (w, g) {
+                w['GoogleAnalyticsObject'] = g;
+                w[g] = w[g] || function () {
+                    (w[g].q = w[g].q || []).push(arguments)
+                };
+                w[g].l = 1 * new Date();
+            })(window, 'ga');
 
-         // TODO: replace with your Google Analytics profile ID.
-        ga('create', 'UA-XXXX-Y');
-        ga('send', 'pageview');
-    </script>
-
+             // TODO: replace with your Google Analytics profile ID.
+            ga('create', 'UA-XXXX-Y');
+            ga('send', 'pageview');
+        </script>
+        <style>
+            @import "//fonts.googleapis.com/css?family=Open+Sans&subset=latin:400,700"
+        </style>
 </body>
 
 </html>
