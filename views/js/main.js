@@ -15,7 +15,8 @@ Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
-var items;
+var items = document.getElementsByClassName('.mover');
+ 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -505,8 +506,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  items = document.getElementsByClassName('.mover');
-  for (var i = 0; i < items.length; i++) {
+   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
