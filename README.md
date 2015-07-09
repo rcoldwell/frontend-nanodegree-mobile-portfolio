@@ -3,14 +3,15 @@
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
-PageSpeed mobile:96  desktop: 97
+##PageSpeed Insights:
+ - mobile:95/100  desktop: 96/100
 
 Optimization on index.html was accomplished by:
 
-    • Inlining CSS
-    • Setting the Google analytics.js and perf.js files to async
-    • Moving the analytics inline script and Google font reference to the end of the body
-    • The images pizzeria.jpg, pizza.png and profilepic.jpg were resized and recompressed
+    - Inlining CSS
+    - Setting the Google analytics.js and perf.js files to async
+    - Moving the analytics inline script and Google font reference to the end of the body
+    - The images pizzeria.jpg, pizza.png and profilepic.jpg were resized and recompressed
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
