@@ -20,8 +20,8 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/view
 
 #####Scrolling the page will render moving pizzas faster
 Scrolling renders faster than 60fps
-1. Scrolltop dom query moved out of for loop
-2. Switched from querySelectorAll to getElementsByClassName
+    1. Scrolltop dom query moved out of for loop
+    2. Switched from querySelectorAll to getElementsByClassName
 
 ##### Original:
     function updatePositions() {
@@ -46,8 +46,8 @@ Scrolling renders faster than 60fps
 
     
 ####Pizza size slider performance improvements
-1. Creating pizzas in 18 ms on page load
-2. Columns reduced to 6 and pizza count reduced to 300 to only render visible pizzas
+    1. Creating pizzas in 18 ms on page load
+    2. Columns reduced to 6 and pizza count reduced to 300 to only render visible pizzas
 
 ##### Original:
       document.addEventListener('DOMContentLoaded', function() {
@@ -67,7 +67,7 @@ Scrolling renders faster than 60fps
       });
 
 ##### Modified:
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     var cols = 6;
     var s = 256;
     for (var i = 0; i < 30; i++) {
@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector("#movingPizzas1").appendChild(elem);
     }
     updatePositions();
-});
+    });
 
 Pizza slider resizing performance
-1. Resizing in approximately 1.1 ms
-2. Variables moved outside the for loop to prevent unnecessary additional queries/calculations
-3. Variable reference used to set new width instead of making another dom query
-4. Switched from querySelectorAll to getElementsByClassName
+    1. Resizing in approximately 1.1 ms
+    2. Variables moved outside the for loop to prevent unnecessary additional queries/calculations
+    3. Variable reference used to set new width instead of making another dom query
+    4. Switched from querySelectorAll to getElementsByClassName
 
 ##### Original:
       function changePizzaSizes(size) {
@@ -97,6 +97,7 @@ Pizza slider resizing performance
           document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
         }
       }
+      
 ##### Modified:
     function changePizzaSizes(size) {
         var pizzacontainers = document.getElementsByClassName("randomPizzaContainer");
@@ -107,5 +108,5 @@ Pizza slider resizing performance
         }
     }
     
-#####graphics optimizations
+#####Graphics optimizations
    - The images pizzeria.jpg, pizza.png and profilepic.jpg were resized, recompressed and metadata removed
