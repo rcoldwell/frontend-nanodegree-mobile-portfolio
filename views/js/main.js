@@ -455,7 +455,6 @@ var resizePizzas = function (size) {
     // Iterates through pizza elements on the page and changes their widths
     function changePizzaSizes(size) {
         var pizzacontainers = document.getElementsByClassName("randomPizzaContainer");
-        //console.log(pizzacontainers);
         var dx = determineDx(pizzacontainers[0], size);
         var newwidth = (pizzacontainers[0].offsetWidth + dx) + 'px';
         for (var i = 0; i < pizzacontainers.length; i++) {
@@ -507,14 +506,15 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
-    var padding = 0;
-    for (var i = 0; i < items.length; i++) {
-        if (padding > 4) {
-            padding = 0;
-        }
-        var phase = 100 * (Math.sin((document.body.scrollTop / 1250) + padding));
-        items[i].style.left = items[i].basicLeft + phase + 'px';
-        padding++;
+
+    //get all mover elements and the scrolltop value
+    var items = document.getElementsByClassName("mover");
+    var top = document.body.scrollTop;
+
+    //for each mover element calculate the new location
+    for (i = 0; i < items.length; i++) {
+        var phase = Math.sin(top / 1250 + i % 5);
+        items[i].style.left = items[i].basicLeft + 100 * phase + "px";
     }
 
     // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -530,21 +530,20 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-var items;
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function () {
     var cols = 6;
     var s = 256;
+    //number of pizzas reduced to 30 from 200 since more than 30 won't ever be visible
     for (var i = 0; i < 30; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza.png";
         elem.style.height = "100px";
-        elem.style.width = "73.333px";
+        elem.style.width = "73px";
         elem.basicLeft = (i % cols) * s;
         elem.style.top = (Math.floor(i / cols) * s) + 'px';
         document.querySelector("#movingPizzas1").appendChild(elem);
     }
-    items = document.getElementsByClassName('mover');
     updatePositions();
 });
