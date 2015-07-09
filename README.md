@@ -16,10 +16,10 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/
 
 
 
-####Part 2: Optimize Frames per Second in pizza.html
+####Part 2: Optimize performance in pizza.html
 Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html
 
-- Scrolling renders faster than 60fps
+- Scrolling renders pizzas faster than 60fps
 - Scrolltop dom query moved out of for loop
 - Switched from querySelectorAll to getElementsByClassName
 
@@ -46,7 +46,7 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/view
 
     
 ####Pizza size slider performance improvements
-- Creating pizzas in 18 ms on page load
+- Creating pizzas takes 18 ms on page load
 - Columns reduced to 6 and pizza count reduced to 300 to only render visible pizzas
 
 ##### Original:
@@ -84,7 +84,7 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/view
     });
 
 - Pizza slider resizing performance
-    - Resizing in approximately 1.1 ms
+    - Resizing occurs in approximately 1.1 ms
     - Variables moved outside the for loop to prevent unnecessary additional queries/calculations
     - Variable reference used to set new width instead of making another dom query
     - Switched from querySelectorAll to getElementsByClassName
