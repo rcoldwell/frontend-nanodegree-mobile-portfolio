@@ -5,23 +5,23 @@
 Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/
 
 #####PageSpeed Insights:
- - mobile:95/100  desktop: 96/100
+ - mobile:95/100  
+ - desktop: 96/100
 
-Optimization on index.html was accomplished by:
+#####Optimization on index.html was accomplished by:
+- Inlining CSS
+- Setting the Google analytics.js and perf.js files to async
+- Moving the analytics inline script and Google font reference to the end of the body
+- The images pizzeria.jpg, pizza.png and profilepic.jpg were resized and recompressed
 
-    - Inlining CSS
-    - Setting the Google analytics.js and perf.js files to async
-    - Moving the analytics inline script and Google font reference to the end of the body
-    - The images pizzeria.jpg, pizza.png and profilepic.jpg were resized and recompressed
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
 Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html
 
-#####Scrolling the page will render moving pizzas faster
-Scrolling renders faster than 60fps
-    1. Scrolltop dom query moved out of for loop
-    2. Switched from querySelectorAll to getElementsByClassName
+- Scrolling renders faster than 60fps
+- Scrolltop dom query moved out of for loop
+- Switched from querySelectorAll to getElementsByClassName
 
 ##### Original:
     function updatePositions() {
@@ -46,8 +46,8 @@ Scrolling renders faster than 60fps
 
     
 ####Pizza size slider performance improvements
-    1. Creating pizzas in 18 ms on page load
-    2. Columns reduced to 6 and pizza count reduced to 300 to only render visible pizzas
+- Creating pizzas in 18 ms on page load
+- Columns reduced to 6 and pizza count reduced to 300 to only render visible pizzas
 
 ##### Original:
       document.addEventListener('DOMContentLoaded', function() {
@@ -83,11 +83,11 @@ Scrolling renders faster than 60fps
     updatePositions();
     });
 
-Pizza slider resizing performance
-    1. Resizing in approximately 1.1 ms
-    2. Variables moved outside the for loop to prevent unnecessary additional queries/calculations
-    3. Variable reference used to set new width instead of making another dom query
-    4. Switched from querySelectorAll to getElementsByClassName
+- Pizza slider resizing performance
+    - Resizing in approximately 1.1 ms
+    - Variables moved outside the for loop to prevent unnecessary additional queries/calculations
+    - Variable reference used to set new width instead of making another dom query
+    - Switched from querySelectorAll to getElementsByClassName
 
 ##### Original:
       function changePizzaSizes(size) {
@@ -109,4 +109,4 @@ Pizza slider resizing performance
     }
     
 #####Graphics optimizations
-   - The images pizzeria.jpg, pizza.png and profilepic.jpg were resized, recompressed and metadata removed
+- The images pizzeria.jpg, pizza.png and profilepic.jpg were resized, recompressed and metadata removed
