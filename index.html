@@ -17,6 +17,7 @@
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: none
         }
+        
         body {
             background: #fff;
             margin: 0;
@@ -24,6 +25,7 @@
             line-height: 1.61;
             font-weight: 400
         }
+        
         body,
         button,
         input,
@@ -32,63 +34,77 @@
             font-family: 'Open Sans', sans-serif;
             color: #333
         }
+        
         a {
             color: #12C
         }
+        
         a:visited {
             color: #61C
         }
+        
         a:focus {
             outline: thin dotted
         }
+        
         a:hover,
         a:active {
             color: #c00;
             outline: 0
         }
+        
         b,
         strong {
             font-weight: 700
         }
+        
         pre,
         code {
             font-family: monospace, monospace;
             font-size: 1em
         }
+        
         ul,
         ol {
             margin: 1em 0;
             padding: 0 0 0 20px
         }
+        
         img {
             border: 0;
             max-width: 100%
         }
+        
         header,
         footer,
         .container {
             max-width: 45em;
             margin: 0 auto
         }
+        
         header {
             padding: 0 .5em;
             color: #C90B0B
         }
+        
         header img {
             border-radius: 40px;
             float: left;
             width: 70px;
             height: 70px
         }
+        
         header p {
             font-size: 1.5em;
             font-weight: 700;
             padding-left: 4em
         }
+        
         header p span {
             font-size: .8em;
             font-weight: 400
         }
+        
         .hero {
             padding: 2em;
             background-color: #f8f8f8;
@@ -96,67 +112,37 @@
             border-bottom: 1px solid #ccc;
             border-top: 1px solid #ccc
         }
+        
         .content {
             padding: 1em
         }
+        
         .content li {
             list-style-type: none;
             font-size: 1.1em
         }
+        
         li img {
             float: left;
             padding-right: 1em
         }
+        
         li p {
             font-size: .9em;
             font-style: italic
         }
+        
         footer {
             padding: 0 .5em;
             border-top: 1px solid #ccc
         }
+        
         footer span {
             float: right;
             font-style: italic
         }
-        @media print {
-            * {
-                background: transparent !important;
-                color: black !important;
-                text-shadow: none !important;
-                filter: none !important;
-                -ms-filter: none !important;
-            }
-            a,
-            a:visited {
-                color: #444 !important;
-                text-decoration: underline;
-            }
-            a[href]:after {
-                content: " (" attr(href)")";
-            }
-            tr,
-            img {
-                page-break-inside: avoid;
-            }
-            img {
-                max-width: 100% !important;
-            }
-            @page {
-                margin: 0.5cm;
-            }
-            p,
-            h2,
-            h3 {
-                orphans: 3;
-                widows: 3;
-            }
-            h2,
-            h3 {
-                page-break-after: avoid;
-            }
-        }
-        /* Smartphones (portrait) */
+        
+        /* Smartphones (portrait) */     
         @media only screen and (max-width: 480px) {
             body {
                 font-size: 12px;
@@ -167,6 +153,7 @@
         }
     </style>
 
+    <link rel="stylesheet" media="print" href="css/print.css">
     <script src="http://www.google-analytics.com/analytics.js" async></script>
     <script src="js/perfmatters.js" async></script>
 
@@ -229,7 +216,7 @@
                 w[g].l = 1 * new Date();
             })(window, 'ga');
 
-             // TODO: replace with your Google Analytics profile ID.
+            // TODO: replace with your Google Analytics profile ID.
             ga('create', 'UA-XXXX-Y');
             ga('send', 'pageview');
         </script>
