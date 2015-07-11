@@ -1,10 +1,4 @@
-## EXPIRES CACHING ##
-<IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType image/jpg "access 10 minutes"
-ExpiresByType image/png "access 10 minutes"
-ExpiresByType text/css "access 10 minutes"
-ExpiresByType text/x-javascript "access 10 minutes"
-ExpiresDefault "access 10 minutes"
-</IfModule>
-## EXPIRES CACHING ##
+<FilesMatch "\.(gif|jpe?g|png|ico|css|js|swf)$">
+     Header set Cache-Control "max-age=36000, public, must-revalidate"
+
+</FilesMatch>
