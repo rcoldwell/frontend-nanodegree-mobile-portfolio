@@ -30,6 +30,7 @@ form {
 }
 
 .mover {
+  backfact-visibility:hidden;
   position: fixed;
   width: 256px;
   z-index: -1;
