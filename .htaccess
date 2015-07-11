@@ -1,4 +1,4 @@
 <FilesMatch "\.(gif|jpe?g|png|ico|css|js|swf)$">
-     Header set Cache-Control "max-age=36000, public, must-revalidate"
+     Header set Cache-Control "max-age=600, public, must-revalidate"
 
 </FilesMatch>
