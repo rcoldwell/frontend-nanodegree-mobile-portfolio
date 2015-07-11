@@ -1,4 +1,8 @@
-<FilesMatch "\.(gif|jpe?g|png|ico|css|js|swf)$">
-     Header set Cache-Control "max-age=600, public, must-revalidate"
+# Browser Caching
 
-</FilesMatch>
+FileETag MTime Size
+
+<IfModule expires_module>
+    ExpiresActive on
+    ExpiresDefault "access plus 1 week"
+</IfModule>
