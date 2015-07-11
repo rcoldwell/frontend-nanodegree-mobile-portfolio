@@ -5,8 +5,8 @@
 Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/
 
 #####PageSpeed Insights:
- - mobile:95/100  
- - desktop: 96/100
+ - mobile:90/100  
+ - desktop: 92/100
 
 #####Optimization on index.html was accomplished by:
 - Inlining CSS
