@@ -112,10 +112,11 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/view
         var pizzacontainers = document.getElementsByClassName("randomPizzaContainer");
         var dx = determineDx(pizzacontainers[0], size);
         var newwidth = (pizzacontainers[0].offsetWidth + dx) + 'px';
-        for (var i = 0; i < pizzacontainers.length; i++) {
+        var containercount = pizzacontainers.length;
+        for (var i = 0; i < containercount; i++) {
             pizzacontainers[i].style.width = newwidth;
         }
-    }
+     }
     
 #####Graphics optimizations
 - The images pizzeria.jpg, pizza.png and profilepic.jpg were resized, recompressed and metadata removed
