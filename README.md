@@ -5,12 +5,13 @@
 Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/
 
 #####PageSpeed Insights:
- - mobile:90/100  
+ - mobile:91/100  
  - desktop: 92/100
 
 #####Optimization on index.html was accomplished by:
 - Inlining CSS
 - Setting the Google analytics.js and perf.js files to async
+- Minified style.css and main.js
 - Moving the analytics inline script and Google font reference to the end of the body
 - The images pizzeria.jpg, pizza.png and profilepic.jpg were resized and recompressed
 
@@ -39,18 +40,19 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/view
         ...
         var items = document.getElementsByClassName("mover");
         var top = document.body.scrollTop;
+        var phase;
         for (i = 0; i < items.length; i++) {
-            var phase = Math.sin(top / 1250 + i % 5);
-            items[i].style.left = items[i].basicLeft + 100 * phase + "px";
+           phase = Math.sin(top / 1250 + i % 5);
+           items[i].style.left = items[i].basicLeft + 100 * phase + "px";
         }
         ...
 
 #####Pizza creation performance improvements
 - Creating pizzas takes 18 ms on page load
-- Columns reduced to 6 and pizza count reduced to 300 to only render visible pizzas
+- Number of pizzas dynamically created based on window height
 
 ##### Original:
-      document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         var cols = 8;
         var s = 256;
         for (var i = 0; i < 200; i++) {
@@ -64,23 +66,30 @@ Launch url: http://rcoldwell.github.io/frontend-nanodegree-mobile-portfolio/view
           document.querySelector("#movingPizzas1").appendChild(elem);
         }
         updatePositions();
-      });
+    });
 
 ##### Modified:
     document.addEventListener('DOMContentLoaded', function () {
-    var cols = 6;
-    var s = 256;
-    for (var i = 0; i < 30; i++) {
-        var elem = document.createElement('img');
-        elem.className = 'mover';
-        elem.src = "images/pizza.png";
-        elem.style.height = "100px";
-        elem.style.width = "73px";
-        elem.basicLeft = (i % cols) * s;
-        elem.style.top = (Math.floor(i / cols) * s) + 'px';
-        document.querySelector("#movingPizzas1").appendChild(elem);
-    }
-    updatePositions();
+        var cols = 8;
+        var s = 256;
+        //number of pizzas calculated based on viewport
+        var windowheight = window.innerHeight;
+        var rowheight = 254;
+        var rows = Math.ceil(windowheight/rowheight);
+        var pizzacount = rows * cols;
+        var elem;
+        var movingpizzas = document.getElementById("movingPizzas1");
+        for (var i = 0; i < pizzacount; i++) {
+            elem = document.createElement('img');
+            elem.className = 'mover';
+            elem.src = "images/pizza.png";
+            elem.style.height = "100px";
+            elem.style.width = "73px";
+            elem.basicLeft = (i % cols) * s;
+            elem.style.top = (Math.floor(i / cols) * s) + 'px';
+            movingpizzas.appendChild(elem);
+        }
+        updatePositions();
     });
 
 #####Pizza resizing performance improvements
